@@ -15,7 +15,6 @@ public class Projectile : MonoBehaviour
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
     }
-
     private void Update()
     {
         if (hit) return;
@@ -26,7 +25,6 @@ public class Projectile : MonoBehaviour
         lifetime += Time.deltaTime;
         if (lifetime > 5) gameObject.SetActive(false);
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         hit = true;

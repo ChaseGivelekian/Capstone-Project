@@ -19,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
     }
-
     private void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
@@ -62,7 +61,6 @@ public class PlayerMovement : MonoBehaviour
             wallJumpCooldown += Time.deltaTime;
         }
     }
-
     private void Jump()
     {
         if (isGrounded())
@@ -87,19 +85,16 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
-
     private bool isGrounded()
     {
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
         return raycastHit.collider != null;
     }
-
     private bool onWall()
     {
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
         return raycastHit.collider != null;
     }
-
     public bool canAttack()
     {
         return horizontalInput == 0 && isGrounded() && !onWall();
