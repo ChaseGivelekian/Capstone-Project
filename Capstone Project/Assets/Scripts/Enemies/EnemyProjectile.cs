@@ -24,6 +24,7 @@ public class EnemyProjectile : EnemyDamage //Will damage the player every time t
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
+        base.OnTriggerEnter2D(collision); //Execute logic from parent script first
+        gameObject.SetActive(false); //When this hits any object deactivate
     }
 }
